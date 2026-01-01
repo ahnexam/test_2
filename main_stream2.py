@@ -1,3 +1,8 @@
+# 배포시---
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# -----
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
@@ -12,11 +17,6 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 import tempfile
-
-# 배포시---
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # load_dotenv()
 api_key = st.text_input("OpenAI_API_KEY",type='password')
